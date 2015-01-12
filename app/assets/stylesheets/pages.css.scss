@@ -3,10 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 html,body {
   height:100%;
+  background-color:#d0d4c3;
 }
 
 p {
   font-family: 'Oxygen', sans-serif;
+  color:#191d1b;
 }
 
 h1 {
@@ -22,7 +24,7 @@ h2, h3, h4, h5 {
 
 .lead {
   color:#191d1b;
-  font-size:25px;
+  font-size:35px;
   font-family: 'Oxygen', sans-serif;
 }
 
@@ -32,7 +34,7 @@ h2, h3, h4, h5 {
   margin: 0 auto;
   width: 100%;
   min-height:100%;
-  background-color:#110022;
+  background-color:#d0d4c3;
   background: image-url("congress.jpg") no-repeat bottom center scroll;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -48,18 +50,24 @@ h2, h3, h4, h5 {
 }
 
 .transparent {
-  background: rgba(246, 254, 233, 0.5);
+  padding-top:3%;
+  background: rgba(208, 212, 195, 0.6);
+  padding-bottom:3%;
 }
 
-.v-center {
-  margin-top:15%;
-  padding-bottom:24%;
+.home-bar {
+  margin-top:10%;
 }
 
 .input-group {
   width:340px;
   text-align:center;
   margin:0 auto;
+  margin-top: 2%;
+}
+
+.input-lg {
+  background-color: #f6fee9;
 }
 
 .btn {
