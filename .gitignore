@@ -21,3 +21,6 @@
 
 # Ignore SimpleCov coverage directory.
 coverage
+
+# Ignore secrets.yml
+/config/secrets.yml
