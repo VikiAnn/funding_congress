@@ -1,0 +1,92 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+html,body {
+  height:100%;
+}
+
+p {
+  font-family: 'Oxygen', sans-serif;
+}
+
+h1 {
+  font-family: 'Merriweather', serif;
+  color:#191d1b;
+  font-size:65px;
+}
+
+h2, h3, h4, h5 {
+  font-family: 'Merriweather', serif;
+  color:#191d1b;
+}
+
+.lead {
+  color:#191d1b;
+  font-size:25px;
+  font-family: 'Oxygen', sans-serif;
+}
+
+
+/* Custom container */
+.container-full {
+  margin: 0 auto;
+  width: 100%;
+  min-height:100%;
+  background-color:#110022;
+  background: image-url("congress.jpg") no-repeat bottom center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color:#eee;
+  overflow:hidden;
+}
+
+.container-full a {
+  color:#efefef;
+  text-decoration:none;
+}
+
+.transparent {
+  background: rgba(246, 254, 233, 0.5);
+}
+
+.v-center {
+  margin-top:15%;
+  padding-bottom:24%;
+}
+
+.input-group {
+  width:340px;
+  text-align:center;
+  margin:0 auto;
+}
+
+.btn {
+  background-color: #37588d;
+  color: #f6fee9;
+  border:none;
+}
+
+.navbar-inverse {
+  background-color: #162338;
+  border:none;
+}
+
+.navbar a {
+  color: #9fa49f !important;
+}
+
+.navbar a:hover {
+  color: #f6fee9 !important;
+}
+
+.navbar .navbar-brand {
+  font-family: 'Merriweather', serif;
+  color: #8fa0c4 !important;
+}
+
+.content-section {
+  padding-top:200px;
+  padding-bottom:200px;
+}
