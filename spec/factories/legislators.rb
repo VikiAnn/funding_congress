@@ -7,7 +7,7 @@ FactoryGirl.define do
     last_name Faker::Name.last_name
     middle_name Faker::Name.first_name
     nickname "Bobby Jo"
-    gender { ["Male", "Female"].sample }
+    gender { ["M", "F"].sample }
     state Faker::Address.state_abbr
     title { ["Sen", "Rep", "Del", "Com"].sample }
     chamber { ["chamber", "house"].sample }
