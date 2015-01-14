@@ -17,3 +17,19 @@
  */
 @text-color: #191d1b;
  @import url(http://fonts.googleapis.com/css?family=Merriweather:400,900italic|Oxygen);
+
+ .alert.alert-info.alert-dismissible {
+   background-color: rgba(25, 29, 27, 0.7);
+   font-family: 'Oxygen', sans-serif;
+   font-size: 20px;
+   color: #f6fee9;
+   margin-bottom: 0;
+   border: none;
+ }
+
+ .alert-container {
+   margin-top: 4%;
+   position: absolute;
+   height: 0;
+   width: 100%;
+ }
