@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150112215121) do
+ActiveRecord::Schema.define(version: 20150114002730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "contributors", force: :cascade do |t|
+    t.string   "name"
+    t.decimal  "total_amount"
+    t.string   "cycle"
+    t.integer  "legislator_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "legislators", force: :cascade do |t|
     t.string   "bioguide_id"
