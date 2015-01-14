@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :legislators, only: [:index]
 
   get '/auth/:provider/callback', to: 'sessions#create'
+  get '/auth/failure', to: 'sessions#create'
 
   get '/login' => redirect('/auth/facebook'), as: :login
   get '/logout' => 'sessions#destroy', as: :logout
