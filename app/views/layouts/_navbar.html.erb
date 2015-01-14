@@ -9,8 +9,13 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/legislators">Login</a></li>
+      <ul class="account nav navbar-nav navbar-right">
+        <% if current_user %>
+          <span>Welcome, <%= current_user.name %></span>
+          <%= link_to "Logout", root_path, id: "logout" %>
+        <% else %>
+          <%= link_to "Login", login_path, id: "login" %>
+        <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

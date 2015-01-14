@@ -4,6 +4,7 @@ SimpleCov.start do
 end
 require 'factory_girl_rails'
 require 'faker'
+require 'omniauth'
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
@@ -15,4 +16,6 @@ RSpec.configure do |config|
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
   end
+
+  OmniAuth.config.test_mode = true
 end

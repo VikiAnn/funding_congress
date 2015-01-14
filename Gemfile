@@ -14,6 +14,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'factory_girl_rails', require: false
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'figaro'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -36,4 +37,5 @@ end
 
 group :test do
   gem 'simplecov', require: false
+  gem 'capybara'
 end
