@@ -1,7 +1,19 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'faker'
+require 'factory_girl_rails'
+class Seed
+  def initialize
+    generate_legislators
+    generate_contributors
+  end
+
+  def generate_legislators
+    FactoryGirl.create(:legislator, first_name: "Diana",
+    last_name: "DeGette",
+    middle_name: "L.",
+    gender: "F",
+    state: "CO",
+    title: "Rep",
+    chamber: "house")
+  end
+
+end

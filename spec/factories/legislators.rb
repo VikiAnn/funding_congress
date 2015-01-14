@@ -10,6 +10,6 @@ FactoryGirl.define do
     gender { ["M", "F"].sample }
     state Faker::Address.state_abbr
     title { ["Sen", "Rep", "Del", "Com"].sample }
-    chamber { ["chamber", "house"].sample }
+    chamber { ["senate", "house"].sample }
   end
 end

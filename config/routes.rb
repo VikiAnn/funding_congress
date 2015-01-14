@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   resources :legislators, only: [:index]
+
+  get '/auth/:provider/callback', to: 'sessions#create'
+
+  get '/login' => redirect("/auth/facebook"), as: :login
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

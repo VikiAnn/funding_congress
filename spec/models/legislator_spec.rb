@@ -9,6 +9,11 @@ RSpec.describe Legislator, :type => :model do
     expect(legislator.nickname).to be_present
   end
 
+  it "can display a full name with title" do
+    legislator = create(:legislator, first_name: "Sarah", last_name: "Silver", title: "Sen", party: "D")
+    expect(legislator.full_name_and_title).to eq "Sen Sarah Silver, D"
+  end
+
   it "has a bioguide id" do
     expect(legislator.bioguide_id).to be_present
     expect(legislator.bioguide_id.length).to eq (7)
