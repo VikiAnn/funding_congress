@@ -7,7 +7,8 @@ class Seed
   end
 
   def generate_legislators
-    @degette = FactoryGirl.create(:legislator, first_name: "Diana",
+    @degette = FactoryGirl.create(:legislator, party: "D",
+      first_name: "Diana",
       last_name: "DeGette",
       middle_name: "L.",
       gender: "F",
