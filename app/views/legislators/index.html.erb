@@ -9,10 +9,10 @@
       <% @legislators.each do |legislator| %>
       <hr>
       <h3><%= legislator.full_name_and_title %></h3>
-      <ul>
-        <li>Funding source # 1</li>
-        <li>Funding source # 2</li>
-        <li>Funding source # 3</li>
+      <ul class="contributors_for_legislator_<%= legislator.id %>">
+        <% legislator.contributors.each do |contributor| %>
+          <li><%= contributor.name %> -- <%= number_to_currency(contributor.total_amount) %></li>
+        <% end %>
       </ul>
       <% end %>
     </div>

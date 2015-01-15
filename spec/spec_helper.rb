@@ -18,4 +18,5 @@ RSpec.configure do |config|
   end
 
   OmniAuth.config.test_mode = true
+  OmniAuth.config.logger = Logger.new(StringIO.new)
 end

@@ -51,5 +51,6 @@ describe "facebook login", type: :feature do
     find_link("Login").click
 
     expect(page).to have_link("Login")
+    expect(page).to have_content("Your Facebook login info was incorrect. Please try again.")
   end
 end
