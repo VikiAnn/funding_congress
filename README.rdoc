@@ -1,7 +1,4 @@
-== Funding Congress
+== [Funding Congress](http://192.34.58.254/)
 
 A place where you can find your legislators and discover where their top campaign
 funding sources come from.
-
-How to get started:
-Uh, wait til I get it up in production. You can't have my facebook keys, yo.
