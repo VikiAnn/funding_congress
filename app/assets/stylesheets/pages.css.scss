@@ -26,7 +26,7 @@ h1, h2, h3, h4, h5, h6 {
   color:#191d1b;
 }
 
-.fa-facebook-square {
+.fa-facebook-square.fa-2x {
   color: #3b5998;
 }
 
@@ -38,7 +38,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #bb0000;
 }
 
-.navbar.ul.li.fa {
+.navbar.ul.li.fa.fa-facebook-square {
   color: rgba(208, 212, 195, 0.6);
 }
 
@@ -121,4 +121,15 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 100%;
   padding-top:200px;
   padding-bottom:200px;
+}
+
+.bottom-of-splash {
+  position: absolute;
+  bottom: 0;
+  font-size: 11px;
+  margin-left: 1%;
+}
+
+.bottom-of-splash a {
+  color: #191d1b;
 }
