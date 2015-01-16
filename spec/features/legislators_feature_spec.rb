@@ -28,4 +28,14 @@ describe "legislator listing page", type: :feature do
       expect(page).to have_content(contributor2.name)
     end
   end
+
+  it "has social media links for each legislator" do
+    legislator = create(:legislator)
+
+    visit legislators_path
+
+    expect(page).to have_css("a[href*='facebook.com']")
+    expect(page).to have_css("a[href*='twitter.com']")
+    expect(page).to have_css("a[href*='youtube.com']")
+  end
 end

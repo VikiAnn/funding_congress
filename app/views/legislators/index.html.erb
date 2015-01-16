@@ -9,6 +9,9 @@
       <% @legislators.each do |legislator| %>
       <hr>
       <h3><%= legislator.full_name_and_title %></h3>
+      <a href="<%= legislator.facebook_url %>"><i class="fa fa-facebook-square fa-2x"></i></a>
+      <a href="<%= legislator.twitter_url %>"><i class="fa fa-twitter-square fa-2x"></i></a>
+      <a href="<%= legislator.youtube_url %>"><i class="fa fa-youtube-square fa-2x"></i></a>
       <h4>Top Funding Contributors</h4>
       <ul class="contributors_for_legislator_<%= legislator.id %>">
         <% legislator.contributors.each do |contributor| %>
