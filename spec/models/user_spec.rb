@@ -1,19 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
-  it "has a name and email" do
-    user = create(:user)
-    expect(user.name).to be_present
-    expect(user.email).to be_present
-  end
-
-  it "has a provider, uid and token" do
-    user = create(:user)
-    expect(user.provider).to be_present
-    expect(user.uid).to be_present
-    expect(user.token).to be_present
-  end
-
   it "can be found or created from an oauth hash" do
     auth_data = { "provider" => "facebook",
       "uid" => "0123456789101112",

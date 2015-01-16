@@ -39,5 +39,6 @@ end
 
 group :test do
   gem 'simplecov', require: false
+  gem 'shoulda-matchers', require: false
   gem 'capybara'
 end
