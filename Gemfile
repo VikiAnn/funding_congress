@@ -29,6 +29,11 @@ group :development, :test do
   gem 'guard-bundler', require: false
   gem 'guard-rails', require: false
   gem 'guard-livereload', require: false
+  gem 'capistrano', '~> 3.3.0', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-passenger', require: false
+  gem 'capistrano-rvm', require: false
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
