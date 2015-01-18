@@ -38,9 +38,9 @@ class Seed
 
   def generate_contributors
     3.times do
-      FactoryGirl.create(:contributor, legislator: @degette)
-      FactoryGirl.create(:contributor, legislator: @gardner)
-      FactoryGirl.create(:contributor, legislator: @bennet)
+      FactoryGirl.create(:contributor, total_amount: 1000.00, employee_amount: 500.00, legislator: @degette)
+      FactoryGirl.create(:contributor, total_amount: 900.00, employee_amount: 300.00, legislator: @gardner)
+      FactoryGirl.create(:contributor, total_amount: 750.00, employee_amount: 250.00, legislator: @bennet)
     end
 
     puts "contributors generated"

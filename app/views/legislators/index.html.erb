@@ -13,16 +13,28 @@
       <a href="<%= legislator.twitter_url %>"><i class="fa fa-twitter-square fa-2x"></i></a>
       <a href="<%= legislator.youtube_url %>"><i class="fa fa-youtube-square fa-2x"></i></a>
       <h4>Top Funding Contributors</h4>
-      <table class="contributors_for_legislator_<%= legislator.id %>">
-        <tr>
-          <th>
-            Organization
-          </th>
-        </tr>
-       <% legislator.contributors.each do |contributor| %>
-         <tr>
-           <td><%= contributor.name %></td>
-         </tr>
+      <table class="table contributors_for_legislator_<%= legislator.id %>">
+        <thead>
+          <tr>
+            <th>
+              Organization
+            </th>
+            <th>
+              Individual
+            </th>
+            <th>
+              Total
+            </th>
+          </tr>
+        </thead>
+        <% legislator.contributors.each do |contributor| %>
+          <tbody>
+            <tr>
+              <td><%= contributor.name %></td>
+              <td><%= number_to_currency(contributor.employee_amount) %></td>
+              <td><%= number_to_currency(contributor.total_amount) %></td>
+            </tr>
+          </tbody>
         <% end %>
       </table>
       <% end %>

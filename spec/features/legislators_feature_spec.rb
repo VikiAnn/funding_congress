@@ -41,13 +41,15 @@ describe "legislator listing page", type: :feature do
 
   it "has a table for each legislator's contributors" do
     legislator = create(:legislator)
-    contributor = create(:contributor, legislator: legislator)
-    contributor2 = create(:contributor, legislator: legislator)
+    contributor = create(:contributor, employee_amount: 200.00, legislator: legislator)
+    contributor2 = create(:contributor, employee_amount: 300.00, legislator: legislator)
 
     visit legislators_path
 
     within(".contributors_for_legislator_#{legislator.id}") do
-      expect(page).to have_content("#{contributor.name}")
+      expect(page).to have_content(contributor.name)
+      expect(page).to have_content(contributor.total_amount.floor)
+      expect(page).to have_content(contributor.employee_amount.floor)
     end
   end
 end
