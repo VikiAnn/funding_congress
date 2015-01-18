@@ -16,15 +16,10 @@
       <table class="table contributors_for_legislator_<%= legislator.id %>">
         <thead>
           <tr>
-            <th>
-              Organization
-            </th>
-            <th>
-              Individual
-            </th>
-            <th>
-              Total
-            </th>
+            <th>Organization</th>
+            <th>Individual</th>
+            <th>PAC</th>
+            <th>Total</th>
           </tr>
         </thead>
         <% legislator.contributors.each do |contributor| %>
@@ -32,6 +27,7 @@
             <tr>
               <td><%= contributor.name %></td>
               <td><%= number_to_currency(contributor.employee_amount) %></td>
+              <td><%= number_to_currency(contributor.direct_amount) %></td>
               <td><%= number_to_currency(contributor.total_amount) %></td>
             </tr>
           </tbody>
