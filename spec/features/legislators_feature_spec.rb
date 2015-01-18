@@ -38,4 +38,16 @@ describe "legislator listing page", type: :feature do
     expect(page).to have_css("a[href*='twitter.com']")
     expect(page).to have_css("a[href*='youtube.com']")
   end
+
+  it "has a table for each legislator's contributors" do
+    legislator = create(:legislator)
+    contributor = create(:contributor, legislator: legislator)
+    contributor2 = create(:contributor, legislator: legislator)
+
+    visit legislators_path
+
+    within(".contributors_for_legislator_#{legislator.id}") do
+      expect(page).to have_content("#{contributor.name}")
+    end
+  end
 end
