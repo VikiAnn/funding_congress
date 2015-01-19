@@ -53,4 +53,15 @@ describe "legislator listing page", type: :feature do
       expect(page).to have_content(contributor.direct_amount.floor)
     end
   end
+
+  it "shows 2014 cycle by default" do
+    legislator = create(:legislator)
+    contributor = create(:contributor, legislator: legislator, cycle: "2014")
+    contributor2 = create(:contributor, legislator: legislator, cycle: "2012")
+
+    visit legislators_path
+
+    expect(page).to have_content(contributor.name)
+    expect(page).not_to have_content(contributor2.name)
+  end
 end
