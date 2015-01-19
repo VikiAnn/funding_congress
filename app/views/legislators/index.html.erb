@@ -4,7 +4,7 @@
       <h1>My Legislators</h1>
     </div>
   </div>
-  <div class=row>
+  <div class="row">
     <div class="col-xs-12 center-block">
       <% @legislators.each do |legislator| %>
       <hr>
@@ -12,7 +12,20 @@
       <a href="<%= legislator.facebook_url %>"><i class="fa fa-facebook-square fa-2x"></i></a>
       <a href="<%= legislator.twitter_url %>"><i class="fa fa-twitter-square fa-2x"></i></a>
       <a href="<%= legislator.youtube_url %>"><i class="fa fa-youtube-square fa-2x"></i></a>
-      <h4>Top Funding Contributors</h4>
+      <h4>Top Funding Contributors (by campaign cycle)</h4>
+      <ul class="nav nav-tabs">
+        <li role="presentation"><%= link_to "1994", legislators_path(cycle: "1994") %></li>
+        <li role="presentation"><%= link_to "1996", legislators_path(cycle: "1996") %></li>
+        <li role="presentation"><%= link_to "1998", legislators_path(cycle: "1998") %></li>
+        <li role="presentation"><%= link_to "2000", legislators_path(cycle: "2000") %></li>
+        <li role="presentation"><%= link_to "2002", legislators_path(cycle: "2002") %></li>
+        <li role="presentation"><%= link_to "2004", legislators_path(cycle: "2004") %></li>
+        <li role="presentation"><%= link_to "2006", legislators_path(cycle: "2006") %></li>
+        <li role="presentation"><%= link_to "2008", legislators_path(cycle: "2008") %></li>
+        <li role="presentation"><%= link_to "2010", legislators_path(cycle: "2010") %></li>
+        <li role="presentation"><%= link_to "2012", legislators_path(cycle: "2012") %></li>
+        <li role="presentation"><%= link_to "2014", legislators_path(cycle: "2014") %></li>
+      </ul>
       <table class="table contributors_for_legislator_<%= legislator.id %>">
         <thead>
           <tr>
