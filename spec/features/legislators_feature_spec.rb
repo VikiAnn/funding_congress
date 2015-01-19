@@ -39,6 +39,16 @@ describe "legislator listing page", type: :feature do
     expect(page).to have_css("a[href*='youtube.com']")
   end
 
+  it "has contact info for each legislator" do
+    legislator = create(:legislator, phone: "888-888-88888", office: "123 Legislator Lane", website: "www.legislator.com")
+
+    visit legislators_path
+
+    expect(page).to have_content(legislator.phone)
+    expect(page).to have_content(legislator.office)
+    expect(page).to have_content(legislator.website)
+  end
+
   it "has a table for each legislator's contributors" do
     legislator = create(:legislator)
     contributor = create(:contributor, direct_amount: 800.00, employee_amount: 200.00, legislator: legislator)

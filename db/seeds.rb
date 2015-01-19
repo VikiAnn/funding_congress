@@ -14,7 +14,13 @@ class Seed
       gender: "F",
       state: "CO",
       title: "Rep",
-      chamber: "house")
+      chamber: "house",
+      facebook_id: "110757973488",
+      twitter_id: "RepDianaDeGette",
+      youtube_id: "RepDianaDeGette",
+      phone: "202-225-4431",
+      office: "2368 Rayburn House Office Building",
+      website: "http://degette.house.gov")
 
     @gardner = FactoryGirl.create(:legislator, party: "R",
       first_name: "Cory",
@@ -22,7 +28,13 @@ class Seed
       gender: "M",
       state: "CO",
       title: "Sen",
-      chamber: "senate")
+      chamber: "senate",
+      facebook_id: "160924893954206",
+      twitter_id: "RepCoryGardner",
+      youtube_id: "CongressmanGardner",
+      phone: "202-224-5941",
+      office: "B40b Dirksen Senate Office Building",
+      website: "http://www.gardner.senate.gov")
 
     @bennet = FactoryGirl.create(:legislator, party: "D",
       first_name: "Michael",
@@ -31,7 +43,13 @@ class Seed
       gender: "M",
       state: "CO",
       title: "Sen",
-      chamber: "senate")
+      chamber: "senate",
+      facebook_id: "97172997732",
+      twitter_id: "SenBennetCo",
+      youtube_id: "SenatorBennet",
+      phone: "202-224-5852",
+      office: "458 Russell Senate Office Building",
+      website: "http://www.bennet.senate.gov")
 
     puts "legislators generated"
   end
