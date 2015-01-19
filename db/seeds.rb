@@ -44,9 +44,9 @@ class Seed
   end
 
   def contributors_for(legislator)
-    FactoryGirl.create(:contributor, total_amount: 1000.00, employee_amount: 500.00, direct_amount: 500.00, legislator: legislator)
-    FactoryGirl.create(:contributor, total_amount: 900.00, employee_amount: 300.00, direct_amount: 600.00, legislator: legislator)
-    FactoryGirl.create(:contributor, total_amount: 750.00, employee_amount: 250.00, direct_amount: 500.00, legislator: legislator)
+    FactoryGirl.create(:contributor, total_amount: 1000.00, employee_amount: 500.00, direct_amount: 500.00, legislator: legislator, cycle: "2014")
+    FactoryGirl.create(:contributor, total_amount: 900.00, employee_amount: 300.00, direct_amount: 600.00, legislator: legislator, cycle: "2014")
+    FactoryGirl.create(:contributor, total_amount: 750.00, employee_amount: 250.00, direct_amount: 500.00, legislator: legislator, cycle: "2014")
   end
 end
 
