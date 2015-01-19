@@ -22,7 +22,7 @@
             <th>Total</th>
           </tr>
         </thead>
-        <% legislator.contributors.each do |contributor| %>
+        <% legislator.contributors.cycle(@year).each do |contributor| %>
           <tbody>
             <tr>
               <td><%= contributor.name %></td>
