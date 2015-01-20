@@ -22,5 +22,8 @@
 # Ignore SimpleCov coverage directory.
 coverage
 
+# Ignore VCR cassettes
+/spec/fixtures/vcr_cassettes
+
 # Ignore application configuration
 /config/application.yml
