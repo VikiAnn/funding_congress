@@ -1,7 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Contributor, :type => :model do
-  it { should belong_to(:legislator) }
+  it "must have a legislator" do
+    invalid_contributor = Contributor.new
+    valid_contributor = Contributor.new(legislator: create(:legislator))
+
+    expect(invalid_contributor).not_to be_valid
+    expect(valid_contributor).to be_valid
+  end
 
   context "cycle scope" do
     it "should return only records for the specified cycle year" do

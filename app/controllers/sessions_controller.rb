@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController
   def create
     if facebook_login_was_successful?
-      @user = User.find_or_create_by_auth(request.env["omniauth.auth"])
+      @user = User.find_or_create_by(uid: request.env["omniauth.auth"]["uid"])
+      @user.update_from_omniauth(request.env["omniauth.auth"])
+      @user.save!
       session[:user_id] = @user.id
       redirect_to legislators_path, notice: "Welcome, #{@user.name}!"
     else
