@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "LegislatorParser" do
+describe "LegislatorsParser" do
   it "should create legislators from an api response" do
     response = {"results"=>
       [{"bioguide_id"=>"G000562",

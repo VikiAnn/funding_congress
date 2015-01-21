@@ -1,4 +1,4 @@
-class LegislatorParser
+class LegislatorsParser
   attr_reader :data
 
   def initialize(data)
