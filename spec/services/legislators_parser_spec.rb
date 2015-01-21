@@ -49,7 +49,7 @@ describe "LegislatorsParser" do
      "count"=>3,
      "page"=>{"count"=>3, "per_page"=>20, "page"=>1}}
 
-    legislators = LegislatorParser.parse(response)
+    legislators = LegislatorsParser.parse(response)
 
     legislators.each do |legislator|
       expect(legislator.class).to eq Legislator
