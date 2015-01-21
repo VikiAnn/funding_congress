@@ -51,6 +51,12 @@ describe "LegislatorParser" do
 
     legislators = LegislatorParser.parse(response)
 
+    legislators.each do |legislator|
+      expect(legislator.class).to eq Legislator
+    end
+
     expect(legislators.first.last_name).to eq("Gardner")
+    expect(legislators.second.last_name).to eq("DeGette")
+    expect(legislators.last.last_name).to eq("Bennet")
   end
 end
