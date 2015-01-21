@@ -5,6 +5,7 @@ end
 require 'factory_girl_rails'
 require 'faker'
 require 'omniauth'
+require 'vcr'
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
@@ -19,4 +20,9 @@ RSpec.configure do |config|
 
   OmniAuth.config.test_mode = true
   OmniAuth.config.logger = Logger.new(StringIO.new)
+
+  VCR.configure do |config|
+    config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+    config.hook_into :webmock
+  end
 end

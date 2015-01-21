@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.2.0'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
@@ -18,6 +17,7 @@ gem 'figaro'
 gem 'execjs'
 gem 'therubyracer'
 gem 'faker', require: false
+gem 'httparty'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -34,7 +34,6 @@ group :development, :test do
   gem 'capistrano-bundler', require: false
   gem 'capistrano-passenger', require: false
   gem 'capistrano-rvm', require: false
-  gem 'timecop'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
@@ -48,4 +47,7 @@ group :test do
   gem 'shoulda-matchers', require: false
   gem 'capybara'
   gem 'launchy'
+  gem 'timecop'
+  gem 'vcr'
+  gem 'webmock'
 end
