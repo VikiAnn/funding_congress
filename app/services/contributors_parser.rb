@@ -8,7 +8,7 @@ class ContributorsParser
 
   def parse
     contributors = data.map do |contributor_data|
-      Contributor.where(legislator_id: legislator_id, id: contributor_data[:id]).first_or_create.tap do |contributor|
+      Contributor.where(legislator_id: legislator_id, sunlight_id: contributor_data[:id]).first_or_create.tap do |contributor|
         contributor.name            = contributor_data[:name]
         contributor.employee_amount = contributor_data[:employee_amount]
         contributor.total_amount    = contributor_data[:total_amount]
