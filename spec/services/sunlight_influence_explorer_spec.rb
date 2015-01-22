@@ -7,6 +7,7 @@ describe "sunlight influence explorer" do
       response = api.top_contributors("D000197", "2012", 1)
 
       expect(response.first["name"]).to eq("Democracy Engine")
+      expect(response.all? { |response| response["cycle"] == "2012" })
     end
   end
 end

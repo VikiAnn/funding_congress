@@ -21,7 +21,7 @@ class ContributorsIngester
   private
 
   def find_or_create_contributors(legislator_id, contributor_data) 
-    Contributor.where(legislator_id: legislator_id, sunlight_id: contributor_data[:id]).first_or_create
+    Contributor.where(legislator_id: legislator_id, sunlight_id: contributor_data[:id], cycle: contributor_data[:cycle]).first_or_create
   end
 
   def update_and_save_contributors(contributor, contributor_data)

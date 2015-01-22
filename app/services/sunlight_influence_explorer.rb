@@ -8,7 +8,8 @@ class SunlightInfluenceExplorer
 
   def top_contributors(bioguide_id, cycle, limit = 5)
     entity_id = entity_id_lookup(bioguide_id)
-    self.class.get("/aggregates/pol/#{entity_id}/contributors.json", query: {entity_id: entity_id, cycle: cycle, apikey: apikey, limit: limit})
+    response = self.class.get("/aggregates/pol/#{entity_id}/contributors.json", query: {entity_id: entity_id, cycle: cycle, apikey: apikey, limit: limit})
+    save_campaign_cycle(response, cycle)
   end
 
   private
@@ -18,5 +19,11 @@ class SunlightInfluenceExplorer
   def entity_id_lookup(bioguide_id)
     response = self.class.get("/entities/id_lookup.json", query: {bioguide_id: bioguide_id, apikey: apikey})
     response.first["id"]
+  end
+
+  def save_campaign_cycle(response, cycle)
+    response.map do |raw_contributor_hash|
+      raw_contributor_hash.merge("cycle": cycle)
+    end
   end
 end
