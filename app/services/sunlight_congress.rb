@@ -1,5 +1,4 @@
 class SunlightCongress
-  attr_reader :apikey
   include HTTParty
   base_uri "https://congress.api.sunlightfoundation.com"
 
@@ -10,4 +9,9 @@ class SunlightCongress
   def legislators(zip)
     self.class.get("/legislators/locate", query: {zip: zip, apikey: apikey})
   end
+
+  private
+
+  attr_reader :apikey
+
 end
