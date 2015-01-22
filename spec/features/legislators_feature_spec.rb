@@ -4,13 +4,13 @@ describe "legislator listing page", type: :feature do
   it "lists all my legislators" do
     legislator1 = create(:legislator)
     legislator2 = create(:legislator)
-    legislator3 = create(:legislator)
+    contributor1  = create(:contributor, legislator: legislator1)
+    contributor2  = create(:contributor, legislator: legislator2)
 
     visit legislators_path
 
     expect(page).to have_content(legislator1.full_name_and_title)
     expect(page).to have_content(legislator2.full_name_and_title)
-    expect(page).to have_content(legislator3.full_name_and_title)
   end
 
   it "lists contributions for each legislator" do
@@ -31,6 +31,7 @@ describe "legislator listing page", type: :feature do
 
   it "has social media links for each legislator" do
     legislator = create(:legislator)
+    contributor  = create(:contributor, legislator: legislator)
 
     visit legislators_path
 
@@ -41,6 +42,7 @@ describe "legislator listing page", type: :feature do
 
   it "has contact info for each legislator" do
     legislator = create(:legislator, phone: "888-888-88888", office: "123 Legislator Lane", website: "www.legislator.com")
+    contributor  = create(:contributor, legislator: legislator)
 
     visit legislators_path
 

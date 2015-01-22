@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "LegislatorsIngester" do
-  it "should create legislators from an api response" do
+  it "should create legislators for a given zipcode from an api response" do
     response = {"results"=>
       [ build_legislator_hash("last_name"=>"Gardner"),
         build_legislator_hash("last_name"=>"DeGette"),
@@ -9,9 +9,10 @@ describe "LegislatorsIngester" do
      "count"=>3,
      "page"=>{"count"=>3, "per_page"=>20, "page"=>1}}
 
-    legislators = LegislatorsIngester.ingest(response)
+    legislators = LegislatorsIngester.ingest("80203", response)
 
     expect(legislators.all? { |legislator| legislator.class == Legislator })
+    expect(legislators.all? { |legislator| legislator.zipcode == "80203" })
 
     expect(Legislator.count).to eq(3)
     expect(Legislator.first.last_name).to eq("Gardner")

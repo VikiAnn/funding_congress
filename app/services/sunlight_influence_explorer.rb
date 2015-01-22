@@ -23,7 +23,7 @@ class SunlightInfluenceExplorer
 
   def save_campaign_cycle(response, cycle)
     response.map do |raw_contributor_hash|
-      raw_contributor_hash.merge("cycle": cycle)
+      raw_contributor_hash.merge("cycle" => cycle)
     end
   end
 end

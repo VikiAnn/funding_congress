@@ -18,20 +18,18 @@ describe "real legislators from the api", type: :feature do
   end
 
   it "pulls up legislators from the database when the legislators already exist" do
-    legislator1 = create(:legislator, zipcode: "80203")
-    legislator2 = create(:legislator, zipcode: "80203")
-    legislator3 = create(:legislator, zipcode: "80203")
-
-    login
+    legislator =  create(:legislator, zipcode: "80203")
+    contributor = create(:contributor, legislator: legislator)
     user = User.find_by(email: "user@example.com")
+    login
+
     find_link("Add a zipcode").click
     fill_in "Zipcode", with: "80203"
     find_button("Update Zip").click
-    find_link("My Legislators").click
+    visit legislators_path
 
-    expect(Legislator.count).to eq(3)
-    expect(page).to have_content(legislator1.last_name)
-    expect(page).to have_content(legislator2.last_name)
-    expect(page).to have_content(legislator3.last_name)
+    expect(legislator.zipcode).to eq("80203")
+    expect(current_path).to eq(legislators_path)
+    expect(Legislator.count).to eq(1)
   end
 end
