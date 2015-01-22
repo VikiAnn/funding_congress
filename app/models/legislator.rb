@@ -1,6 +1,14 @@
 class Legislator < ActiveRecord::Base
   has_many :contributors
 
+  def self.for_zipcode(zipcode)
+    if _database_legislators(zipcode).empty?
+      LegislatorFetcher.fetch(zipcode)
+    else
+      _database_legislators(zipcode)
+    end
+  end
+
   def full_name_and_title
     "#{title} #{first_name} #{last_name}, #{party}"
   end
@@ -15,5 +23,9 @@ class Legislator < ActiveRecord::Base
 
   def youtube_url
     "https://www.youtube.com/#{youtube_id}"
+  end
+
+  def self._database_legislators(zipcode)
+    where(zipcode: zipcode).where(in_office: true)
   end
 end

@@ -1,7 +1,10 @@
 class LegislatorsController < ApplicationController
   def index
-    # CHANGE THIS LATER, VIKI... something like Legislator.for_current_user
-    @legislators = Legislator.all
+    if current_user && current_user.zipcode
+      @legislators = Legislator.for_zipcode(current_user.zipcode)
+    else
+      @legislators = Legislator.all
+    end
     @year = params["cycle"] || "2014"
   end
 end
