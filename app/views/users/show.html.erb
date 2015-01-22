@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-xs-4">
+  </div>
+  <div class="col-xs-4 text-center top-margin form-inline">
+    <div>
+      <h2>My Info</h2>
+      <p><%= @user.name %></p>
+      <p><%= @user.email %></p>
+      <p><%= @user.zipcode %></p>
+    </div>
+    <div class="form-group">
+      <%= form_for @user do |f| %>
+        <%= f.text_field :zipcode, placeholder: "zipcode", class: "form-control" %>
+        <%= f.label :zipcode, class: "sr-only" %>
+        <%= f.submit "Update Zip", class: "btn btn-default" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-xs-4">
+  </div>
+</div>

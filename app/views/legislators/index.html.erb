@@ -6,7 +6,11 @@
   </div>
   <div class="row">
     <div class="col-xs-12 center-block">
-      <%= render @legislators, year: @year %>
+      <% if !current_user || current_user.zipcode %>
+        <%= render @legislators, year: @year %>
+      <% else %>
+        <%= link_to "Add a zipcode to your profile so your legislators will appear here", user_path(current_user) %>
+      <% end %>
     </div>
   </div>
 </div>
