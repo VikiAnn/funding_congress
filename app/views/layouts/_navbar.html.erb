@@ -12,6 +12,7 @@
       <ul class="account nav navbar-nav navbar-right">
         <% if current_user %>
           <li><%= link_to "Logout", logout_path, id: "logout" %></li>
+          <li><a class="navbar-image" href="/users/<%= current_user.id %>"><img src="<%= current_user.image_url %>"  alt="facebook avatar" /></a></li>
         <% else %>
           <li><a id="login" href="/login">Login <i class="fa fa-facebook-square"></i></a></li>
         <% end %>
