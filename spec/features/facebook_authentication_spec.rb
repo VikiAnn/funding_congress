@@ -1,26 +1,9 @@
 require "rails_helper"
-
-def mock_auth_hash
-  OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({ "provider" => "facebook",
-    "uid" => "0123456789101112",
-    "info" =>
-    { "email" => "user@example.com",
-      "name" => "User Bob",
-      "first_name" => "User",
-      "last_name" => "Bob" },
-      "image" => "http://graph.facebook.com/0123456789101112/picture",
-      "credentials" =>
-      { "token"=> "apiufbgPIUABERPIUBGiaubgpiaerubpiUBAPRIUBGiubpfiegbuPISUBEriubsa" } })
-end
+require "support/login"
+include Login
 
 def mock_invalid_authentication
   OmniAuth.config.mock_auth[:facebook] = :invalid_credentials
-end
-
-def login
-  mock_auth_hash
-  visit root_path
-  find_link("Login").click
 end
 
 describe "facebook login", type: :feature do
@@ -52,5 +35,18 @@ describe "facebook login", type: :feature do
 
     expect(page).to have_link("Login")
     expect(page).to have_content("Your Facebook login info was incorrect. Please try again.")
+  end
+
+  it "creates a user when logging in" do
+    login
+
+    expect(User.all.count).to eq(1)
+    expect(User.last.name).to eq("User Bob")
+  end
+
+  it "prompts a user to save a zipcode if the user hasn't already" do
+    login
+
+    expect(page).to have_link("Add a zipcode")
   end
 end
