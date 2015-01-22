@@ -1,4 +1,4 @@
-class LegislatorFetcher
+class LegislatorsFetcher
   attr_reader :zipcode
 
   def initialize(zipcode)
@@ -11,6 +11,6 @@ class LegislatorFetcher
 
   def fetch
     raw_legislators = SunlightCongress.new.legislators(zipcode)
-    LegislatorsIngester.ingest(raw_legislators)
+    LegislatorsIngester.ingest(zipcode, raw_legislators)
   end
 end

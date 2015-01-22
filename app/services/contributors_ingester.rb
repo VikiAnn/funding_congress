@@ -21,14 +21,13 @@ class ContributorsIngester
   private
 
   def find_or_create_contributors(legislator_id, contributor_hash) 
-    Contributor.where(legislator_id: legislator_id, sunlight_id: contributor_hash[:id], cycle: contributor_hash[:cycle]).first_or_create
+    Contributor.where(legislator_id: legislator_id, name: contributor_hash["name"], cycle: contributor_hash["cycle"]).first_or_create
   end
 
   def update_and_save_contributors(contributor, contributor_hash)
-    contributor.name            = contributor_hash[:name]
-    contributor.employee_amount = contributor_hash[:employee_amount]
-    contributor.total_amount    = contributor_hash[:total_amount]
-    contributor.direct_amount   = contributor_hash[:direct_amount]
+    contributor.employee_amount = contributor_hash["employee_amount"]
+    contributor.total_amount    = contributor_hash["total_amount"]
+    contributor.direct_amount   = contributor_hash["direct_amount"]
     contributor.save!
   end
 end

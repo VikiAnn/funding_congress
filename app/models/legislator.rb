@@ -3,7 +3,7 @@ class Legislator < ActiveRecord::Base
 
   def self.for_zipcode(zipcode)
     if _database_legislators(zipcode).empty?
-      LegislatorFetcher.fetch(zipcode)
+      LegislatorsFetcher.fetch(zipcode)
     else
       _database_legislators(zipcode)
     end

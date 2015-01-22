@@ -1,7 +1,8 @@
 class LegislatorsIngester
-  attr_reader :raw_legislators_json
+  attr_reader :zipcode, :raw_legislators_json
 
-  def initialize(raw_legislators_json)
+  def initialize(zipcode, raw_legislators_json)
+    @zipcode = zipcode
     @raw_legislators_json = raw_legislators_json
   end
 
@@ -13,14 +14,14 @@ class LegislatorsIngester
     end
   end
 
-  def self.ingest(raw_legislators_json)
-    new(raw_legislators_json).ingest
+  def self.ingest(zipcode, raw_legislators_json)
+    new(zipcode, raw_legislators_json).ingest
   end
 
   private
 
   def find_or_create_legislators(legislator_hash)
-    Legislator.where(bioguide_id: legislator_hash["bioguide_id"]).first_or_create
+    legislator = Legislator.where(bioguide_id: legislator_hash["bioguide_id"], zipcode: zipcode).first_or_create
   end
 
   def update_and_save_legislators(legislator, legislator_hash)

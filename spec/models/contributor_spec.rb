@@ -10,12 +10,13 @@ RSpec.describe Contributor, :type => :model do
   end
 
   context "cycle scope" do
-    it "should return only records for the specified cycle year" do
-      contributor1 = create(:contributor, cycle: "2014")
-      contributor2 = create(:contributor, cycle: "2012")
+    it "should return only records for the specified legislator and cycle year" do
+      legislator   = create(:legislator)
+      contributor1 = create(:contributor, cycle: "2014", legislator: legislator)
+      contributor2 = create(:contributor, cycle: "2012", legislator: legislator)
 
-      expect(Contributor.cycle("2014")).to eq [contributor1]
-      expect(Contributor.cycle("2012")).to eq [contributor2]
+      expect(Contributor.cycle(legislator.id, "2014")).to eq [contributor1]
+      expect(Contributor.cycle(legislator.id, "2012")).to eq [contributor2]
     end
   end
 end
