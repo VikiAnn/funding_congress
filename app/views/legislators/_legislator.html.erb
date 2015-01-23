@@ -14,19 +14,26 @@
         <li role="presentation" <%= active(year, @year) %>><%= link_to year, legislators_path(cycle: year) %></li>
       <% end %>
     </ul>
-    <table class="table contributors_for_legislator_<%= legislator.id %>">
-      <thead>
-        <tr>
-          <th>Organization</th>
-          <th>Individual</th>
-          <th>PAC</th>
-          <th>Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render partial: "contributors/row", collection: legislator.contributors.cycle(legislator.id, year) %>
-      </tbody>
-    </table>
+
+    <% unless legislator.contributors.cycle(legislator.id, year).empty? %>
+      <table class="table contributors_for_legislator_<%= legislator.id %>">
+        <thead>
+          <tr>
+            <th>Organization</th>
+            <th>Individual</th>
+            <th>PAC</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: "contributors/row", collection: legislator.contributors.cycle(legislator.id, year) %>
+        </tbody>
+      </table>
+    <% else %>
+      Looks like this legislator wasn't in office in <%= year %>!
+      <br>
+    <% end %>
+    SOURCE: <%= link_to "OpenSecrets.org", "https://www.opensecrets.org/politicians/" %> via the Sunlight Foundation's <%= link_to "Influence Explorer API", "http://sunlightlabs.github.io/datacommons/" %>
   </div>
 </div>
 <hr>

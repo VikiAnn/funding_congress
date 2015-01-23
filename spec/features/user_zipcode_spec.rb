@@ -9,7 +9,7 @@ describe "user profile" do
 
     visit user_path(user)
     fill_in "zipcode", with: "80203"
-    find_button("Update Zip").click
+    find_button("Update").click
 
     expect(current_path).to eq(user_path(user))
     expect(page).to have_content("80203")
