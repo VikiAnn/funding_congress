@@ -9,7 +9,7 @@ describe "real contributors from api" do
       user = User.find_by(email: "user@example.com")
       find_link("Add a zipcode").click
       fill_in "Zipcode", with: "80203"
-      find_button("Update Zip").click
+      find_button("Update").click
       find_link("My Legislators").click
 
       expect(current_path).to eq(legislators_path)
