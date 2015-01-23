@@ -4,6 +4,8 @@ include Login
 
 describe "user profile" do
   it "can add/update a zipcode" do
+    legislator  = create(:legislator, zipcode: "80203")
+    contributor = create(:contributor, legislator: legislator)
     login
     user = User.last
 
@@ -11,8 +13,8 @@ describe "user profile" do
     fill_in "zipcode", with: "80203"
     find_button("Update").click
 
-    expect(current_path).to eq(user_path(user))
-    expect(page).to have_content("80203")
+    expect(user.reload.zipcode).to eq("80203")
+    expect(current_path).to eq(legislators_path)
   end
 
   it "cannot be edited by other users" do
