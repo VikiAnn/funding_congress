@@ -3,7 +3,7 @@ class LegislatorsController < ApplicationController
     if current_user && current_user.zipcode
       @legislators = Legislator.for_zipcode(current_user.zipcode)
     else
-      @legislators = Legislator.all
+      @legislators = Legislator.for_zipcode(params["zipcode"])
     end
     @year = params["cycle"] || "2014"
   end
