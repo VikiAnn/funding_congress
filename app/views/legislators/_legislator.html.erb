@@ -15,7 +15,7 @@
       <% end %>
     </ul>
 
-    <% unless legislator.contributors.cycle(legislator.id, year).empty? %>
+    <% if legislator.contributors.cycle(legislator.id, year).present? %>
       <table class="table contributors_for_legislator_<%= legislator.id %>">
         <thead>
           <tr>
@@ -30,7 +30,9 @@
         </tbody>
       </table>
     <% else %>
+      <br>
       Looks like this legislator wasn't in office in <%= year %>!
+      <br>
       <br>
     <% end %>
     SOURCE: <%= link_to "OpenSecrets.org", "https://www.opensecrets.org/politicians/" %> via the Sunlight Foundation's <%= link_to "Influence Explorer API", "http://sunlightlabs.github.io/datacommons/" %>
