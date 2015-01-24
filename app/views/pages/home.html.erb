@@ -12,9 +12,9 @@
     <div class="row">
       <form class="col-xs-12">
         <div class="input-group">
-          <%= form_tag("/legislators", method: "get", enforce_utf8: false) do %>
+          <%= form_for(:legislator, url: legislators_path, method: "get", enforce_utf8: false) do |f| %>
             <%= search_field_tag("zipcode", nil, class: "form-control input-lg", placeholder: "Enter your zipcode", title: "Enter your zip to find your Congress people") %>
-            <span class="input-group-btn"><%= submit_tag("go", class: "btn btn-lg btn-primary") %></span>
+            <span class="input-group-btn"><%= f.submit("go", class: "btn btn-lg btn-primary") %></span>
           <% end %>
         </div>
       </form>
