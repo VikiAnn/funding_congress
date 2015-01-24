@@ -9,6 +9,10 @@ class Legislator < ActiveRecord::Base
     end
   end
 
+  def name
+    "#{first_name} #{last_name}"
+  end
+
   def full_name_and_title
     "#{title} #{first_name} #{last_name}, #{party}"
   end

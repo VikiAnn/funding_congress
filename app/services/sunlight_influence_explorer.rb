@@ -6,18 +6,23 @@ class SunlightInfluenceExplorer
     @apikey = Rails.application.secrets.sunlight_api_key
   end
 
-  def top_contributors(bioguide_id, cycle, limit = 5)
-    entity_id = entity_id_lookup(bioguide_id)
-    response = self.class.get("/aggregates/pol/#{entity_id}/contributors.json", query: {entity_id: entity_id, cycle: cycle, apikey: apikey, limit: limit})
-    save_campaign_cycle(response, cycle)
+  def top_contributors(name, bioguide_id, cycle, limit = 5)
+    entity_id = entity_id_lookup(name, bioguide_id)
+    if entity_id
+      response = self.class.get("/aggregates/pol/#{entity_id}/contributors.json", query: {entity_id: entity_id, cycle: cycle, apikey: apikey, limit: limit})
+      save_campaign_cycle(response, cycle)
+    end
   end
 
   private
 
   attr_reader :apikey
 
-  def entity_id_lookup(bioguide_id)
+  def entity_id_lookup(name, bioguide_id)
     response = self.class.get("/entities/id_lookup.json", query: {bioguide_id: bioguide_id, apikey: apikey})
+    if response.empty?
+      response = self.class.get("/entities.json", query: {search: name, type: "politician", apikey: apikey})
+    end
     response.first["id"]
   end
 
