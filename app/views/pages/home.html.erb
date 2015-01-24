@@ -12,8 +12,10 @@
     <div class="row">
       <form class="col-xs-12">
         <div class="input-group">
-          <input class="form-control input-lg" title="Enter your zip to find your Congress people" placeholder="Enter your zip code" type="text">
-          <span class="input-group-btn"><%= link_to "go", legislators_path, class: "btn btn-lg btn-primary", method: :get %></span>
+          <%= form_for(:legislator, url: legislators_path, method: "get", enforce_utf8: false) do |f| %>
+            <%= search_field_tag("zipcode", nil, class: "form-control input-lg", placeholder: "Enter your zipcode", title: "Enter your zip to find your Congress people") %>
+            <span class="input-group-btn"><%= f.submit("go", class: "btn btn-lg btn-primary") %></span>
+          <% end %>
         </div>
       </form>
     </div>
