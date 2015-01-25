@@ -1,41 +1,50 @@
-<div class="row legislator-block">
-  <div class="col-xs-12">
-    <h3 class="legislator-name"><%= legislator.full_name_and_title %></h3>
-    <div class="tiny-text">
-      <a href="<%= legislator.facebook_url %>"><i class="fa fa-facebook-square"></i></a>
-      <a href="<%= legislator.twitter_url %>"><i class="fa fa-twitter-square"></i></a>
-      <a href="<%= legislator.youtube_url %>"><i class="fa fa-youtube-square"></i></a> |
-      <%= legislator.phone %> | <%= legislator.office %> | <a href="<%= legislator.website %>"><%= legislator.website %></a>
+<div class="row legislators-block">
+  <div class="row photo-and-contact-info">
+    <div class="col-xs-2">
+      <img src="http://theunitedstates.io/images/congress/225x275/<%= legislator.bioguide_id %>.jpg" class="img-thumbnail img-rounded"  alt="legislator photo" />
     </div>
-    <hr>
-    <h4>Top Funding Contributors (by campaign cycle)</h4>
-    <ul class="nav nav-tabs">
-      <% election_cycles.each do |year| %>
-        <li role="presentation" <%= active(year, @year) %>><%= link_to year, legislators_path(cycle: year) %></li>
-      <% end %>
-    </ul>
-
-    <% if legislator.contributors.cycle(legislator.id, year).present? %>
-      <table class="table contributors_for_legislator_<%= legislator.id %>">
-        <thead>
-          <tr>
-            <th>Organization</th>
-            <th>Individual</th>
-            <th>PAC</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          <%= render partial: "contributors/row", collection: legislator.contributors.cycle(legislator.id, year) %>
-        </tbody>
-      </table>
-    <% else %>
-      <br>
-      Looks like this legislator wasn't in office in <%= year %>!
-      <br>
-      <br>
-    <% end %>
-    SOURCE: <%= link_to "OpenSecrets.org", "https://www.opensecrets.org/politicians/" %> via the Sunlight Foundation's <%= link_to "Influence Explorer API", "http://sunlightlabs.github.io/datacommons/" %>
+    <div class="col-xs-10 legislator-contact">
+      <h3 class="legislator-name"><%= legislator.full_name_and_title %></h3>
+      <div class="contact-text">
+        <a href="<%= legislator.facebook_url %>"><i class="fa fa-facebook-square"></i></a>
+        <a href="<%= legislator.twitter_url %>"><i class="fa fa-twitter-square"></i></a>
+        <a href="<%= legislator.youtube_url %>"><i class="fa fa-youtube-square"></i></a> |
+        <%= legislator.phone %> | <%= legislator.office %> | <a href="<%= legislator.website %>"><%= legislator.website %></a>
+      </div>
+    </div>
   </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <hr>
+      <h4>Top Funding Contributors (by campaign cycle)</h4>
+      <ul class="nav nav-tabs">
+        <% election_cycles.each do |year| %>
+          <li role="presentation" <%= active(year, @year) %>><%= link_to year, legislators_path(cycle: year) %></li>
+        <% end %>
+      </ul>
+
+      <% if legislator.contributors.cycle(legislator.id, year).present? %>
+        <table class="table contributors_for_legislator_<%= legislator.id %>">
+          <thead>
+            <tr>
+              <th>Organization</th>
+              <th>Individual</th>
+              <th>PAC</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render partial: "contributors/row", collection: legislator.contributors.cycle(legislator.id, year) %>
+          </tbody>
+        </table>
+      <% else %>
+        <br>
+        Looks like this legislator wasn't in office in <%= year %>!
+        <br>
+        <br>
+      <% end %>
+      SOURCE: <%= link_to "OpenSecrets.org", "https://www.opensecrets.org/politicians/" %> via the Sunlight Foundation's <%= link_to "Influence Explorer API", "http://sunlightlabs.github.io/datacommons/" %>
+    </div>
+  </div>
+  <hr>
 </div>
-<hr>

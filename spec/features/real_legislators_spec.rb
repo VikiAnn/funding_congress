@@ -3,7 +3,7 @@ require "support/login"
 include Login
 
 describe "real legislators from the api", type: :feature do
-  it "pulls up real legislators when a user with a zipcode is logged in" do
+  it "pulls up real legislators with pictures when a user with a zipcode is logged in" do
     VCR.use_cassette 'service/real_legislators' do
       login
       user = User.find_by(email: "user@example.com")
@@ -14,6 +14,7 @@ describe "real legislators from the api", type: :feature do
 
       expect(current_path).to eq(legislators_path)
       expect(page).to have_content("Rep Diana DeGette, D")
+      expect(page).to have_css("img[src='http://theunitedstates.io/images/congress/225x275/D000197.jpg']")
     end
   end
 

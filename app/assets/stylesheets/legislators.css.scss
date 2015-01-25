@@ -1,0 +1,29 @@
+// Place all the styles related to the legislators controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.title-top {
+  margin-top: 5%;
+}
+
+.contact-text {
+  font-size: 20px;
+}
+
+.legislator-contact {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.legislators-block {
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+.photo-and-contact-info {
+  position: relative;
+}
+
+.contributor-table {
+  padding-bottom: 3%;
+}
