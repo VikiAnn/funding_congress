@@ -23,7 +23,7 @@
         <% end %>
       </ul>
 
-      <% if legislator.contributors.cycle(legislator.id, selected_year).present? %>
+      <% if legislator.contributors.cycle(legislator, selected_year).present? %>
         <table class="table contributors_for_legislator_<%= legislator.id %>">
           <thead>
             <tr>
