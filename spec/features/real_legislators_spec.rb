@@ -32,4 +32,25 @@ describe "real legislators from the api", type: :feature do
     expect(current_path).to eq(legislators_path)
     expect(Legislator.count).to eq(1)
   end
+
+  it "can look up legislators using the home page zipcode field" do
+    legislator1 =  create(:legislator, first_name: "Sara", zipcode: "80203")
+    contributor1 = create(:contributor, legislator: legislator1)
+    legislator2 =  create(:legislator, first_name: "Jane", zipcode: "80203")
+    contributor2 = create(:contributor, legislator: legislator2)
+    legislator3 =  create(:legislator, first_name: "Anne", zipcode: "80003")
+    contributor3 = create(:contributor, name: "Anne's Contributor", legislator: legislator3)
+
+    visit root_path
+    fill_in "zipcode", with: "80203"
+    find_button("go").click
+    
+    expect(current_path).to eq(legislators_path)
+    expect(page).to have_content(legislator1.full_name_and_title)
+    expect(page).to have_content(legislator2.full_name_and_title)
+    expect(page).not_to have_content(legislator3.full_name_and_title)
+    expect(page).to have_content(contributor1.name)
+    expect(page).to have_content(contributor2.name)
+    expect(page).not_to have_content(contributor3.name)
+  end
 end
