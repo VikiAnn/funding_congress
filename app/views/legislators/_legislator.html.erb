@@ -19,11 +19,11 @@
       <h4>Top Funding Contributors (by campaign cycle)</h4>
       <ul class="nav nav-tabs">
         <% election_cycles.each do |year| %>
-          <li role="presentation" <%= active(year, @year) %>><%= link_to year, legislators_path(cycle: year) %></li>
+          <li role="presentation" <%= active(year, selected_year) %>><%= link_to year, legislators_path(cycle: year, zipcode: zipcode) %></li>
         <% end %>
       </ul>
 
-      <% if legislator.contributors.cycle(legislator.id, year).present? %>
+      <% if legislator.contributors.cycle(legislator.id, selected_year).present? %>
         <table class="table contributors_for_legislator_<%= legislator.id %>">
           <thead>
             <tr>
@@ -34,12 +34,12 @@
             </tr>
           </thead>
           <tbody>
-            <%= render partial: "contributors/row", collection: legislator.contributors.cycle(legislator.id, year) %>
+            <%= render partial: "contributors/row", collection: legislator.contributors.cycle(legislator.id, selected_year) %>
           </tbody>
         </table>
       <% else %>
         <br>
-        Looks like this legislator wasn't in office in <%= year %>!
+        Looks like this legislator wasn't in office in <%= selected_year %>!
         <br>
         <br>
       <% end %>
