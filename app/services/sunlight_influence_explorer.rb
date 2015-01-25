@@ -1,12 +1,20 @@
 class SunlightInfluenceExplorer
+  attr_reader :legislator, :cycle, :limit
   include HTTParty
   base_uri "http://transparencydata.com/api/1.0"
 
-  def initialize
+  def initialize(legislator, cycle, limit)
     @apikey = Rails.application.secrets.sunlight_api_key
+    @legislator = legislator
+    @cycle = cycle
+    @limit = limit
   end
 
-  def top_contributors(legislator, cycle, limit = 5)
+  def self.top_contributors(legislator, cycle, limit = 5)
+    new(legislator, cycle, limit).top_contributors
+  end
+
+  def top_contributors
     entity_id = entity_id_lookup(legislator)
     if entity_id
       response = self.class.get("/aggregates/pol/#{entity_id}/contributors.json", query: {entity_id: entity_id, cycle: cycle, apikey: apikey, limit: limit})

@@ -11,7 +11,7 @@ class ContributorsFetcher
   end
 
   def fetch
-    raw_contributors = SunlightInfluenceExplorer.new.top_contributors(legislator, cycle)
+    raw_contributors = SunlightInfluenceExplorer.top_contributors(legislator, cycle)
     if raw_contributors
       ContributorsIngester.ingest(raw_contributors, legislator)
     end
