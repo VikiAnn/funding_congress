@@ -1,14 +1,17 @@
 class UsersController < ApplicationController
-  before_action :require_current_user
+  before_action :require_current_user, :set_user
 
   def show
-    @user = current_user
   end
 
   def update
-    user = current_user
-    user.update!(user_params)
-    redirect_to legislators_path
+    @user.update(user_params)
+    if @user.save
+      redirect_to legislators_path
+    else
+      flash[:notice] = "A zipcode should be 5 digits"
+      render :show
+    end
   end
 
   private
@@ -18,8 +21,12 @@ class UsersController < ApplicationController
   end
 
   def require_current_user
-    unless current_user == User.find(params["id"])
-      redirect_to root_path, notice: "You have to log in to do that!"
+    unless current_user.id == params["id"].to_i
+      redirect_to root_path, notice: "You may only view your own information."
     end
+  end
+
+  def set_user
+    @user = current_user
   end
 end

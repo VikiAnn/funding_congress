@@ -22,4 +22,12 @@ RSpec.describe User, :type => :model do
     expect(user.email).to eq auth_data["info"]["email"]
     expect(user.token).to eq auth_data["credentials"]["token"]
   end
+
+  it "validates that zipcodes consist of 5 digits" do
+    invalid_user = User.create!
+    valid_user = User.create!
+
+    expect{ invalid_user.update!(zipcode: "aaaaa") }.to raise_error
+    expect{ valid_user.update!(zipcode: "00000") }.not_to raise_error
+  end
 end
