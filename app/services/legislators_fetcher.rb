@@ -10,7 +10,7 @@ class LegislatorsFetcher
   end
 
   def fetch
-    raw_legislators = SunlightCongress.new.legislators(zipcode)
+    raw_legislators = SunlightCongress.legislators(zipcode)
     LegislatorsIngester.ingest(zipcode, raw_legislators)
   end
 end

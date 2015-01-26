@@ -17,6 +17,17 @@ describe "user profile" do
     expect(current_path).to eq(legislators_path)
   end
 
+  it "cannot enter a zipcode not consisting of 5 digits" do
+    login
+    user = User.last
+    visit user_path(user)
+    fill_in "zipcode", with: "aaaaa"
+    find_button("Update").click
+
+    expect(current_path).to eq(user_path(user))
+    expect(page).to have_content("A zipcode should be 5 digits")
+  end
+
   it "cannot be edited by other users" do
     other_user = User.create!
     login
@@ -24,6 +35,6 @@ describe "user profile" do
 
     visit user_path(other_user)
     expect(current_path).to eq(root_path)
-    expect(page).to have_content("You have to log in")
+    expect(page).to have_content("You may only view your own information.")
   end
 end

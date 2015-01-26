@@ -4,7 +4,7 @@
       <h1>My Legislators</h1>
     </div>
   </div>
-  <% if !current_user || current_user.zipcode %>
+  <% if !current_user || current_user.zipcode.present? %>
     <%= render @legislators, selected_year: @year, zipcode: @zipcode %>
   <% else %>
     <%= link_to "Add a zipcode to your profile so your legislators will appear here", user_path(current_user) %>
