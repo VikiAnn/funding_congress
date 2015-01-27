@@ -5,6 +5,8 @@ include Login
 describe "real legislators from the api", type: :feature do
   it "pulls up real legislators with pictures when a user with a zipcode is logged in" do
     VCR.use_cassette 'service/real_legislators' do
+      sunlight_influence_explorer = class_double("SunlightInfluenceExplorer").as_stubbed_const
+      allow(sunlight_influence_explorer).to receive(:top_contributors) { [] }
       login
       user = User.find_by(email: "user@example.com")
       find_link("Add a zipcode").click
@@ -21,6 +23,8 @@ describe "real legislators from the api", type: :feature do
   it "pulls up legislators from the database when the legislators already exist" do
     legislator =  create(:legislator, zipcode: "80203")
     contributor = create(:contributor, legislator: legislator)
+    sunlight_influence_explorer = class_double("SunlightInfluenceExplorer").as_stubbed_const
+    allow(sunlight_influence_explorer).to receive(:top_contributors) { [] }
     user = User.find_by(email: "user@example.com")
     login
 
@@ -41,11 +45,13 @@ describe "real legislators from the api", type: :feature do
     contributor2 = create(:contributor, legislator: legislator2)
     legislator3 =  create(:legislator, first_name: "Anne", zipcode: "80003")
     contributor3 = create(:contributor, name: "Anne's Contributor", legislator: legislator3)
+    sunlight_influence_explorer = class_double("SunlightInfluenceExplorer").as_stubbed_const
+    allow(sunlight_influence_explorer).to receive(:top_contributors) { [] }
 
     visit root_path
     fill_in "zipcode", with: "80203"
     find_button("go").click
-    
+
     expect(current_path).to eq(legislators_path)
     expect(page).to have_content(legislator1.full_name_and_title)
     expect(page).to have_content(legislator2.full_name_and_title)
