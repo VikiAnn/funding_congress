@@ -15,4 +15,14 @@ RSpec.describe Legislator, type: :model do
     expect(legislator.twitter_url).to eq ("https://twitter.com/#{legislator.twitter_id}")
     expect(legislator.youtube_url).to eq ("https://www.youtube.com/#{legislator.youtube_id}")
   end
+
+  it "knows what years it has contributors for" do
+    legislator = create(:legislator, first_name: "Sarah", last_name: "Silver", title: "Sen", party: "D")
+    contributor1 = create(:contributor, legislator: legislator, cycle: "2012")
+    contributor2 = create(:contributor, legislator: legislator, cycle: "2014")
+    sunlight_influence_explorer = class_double("SunlightInfluenceExplorer").as_stubbed_const
+    allow(sunlight_influence_explorer).to receive(:top_contributors) { [] }
+
+    expect(legislator.years_with_contributors).to eq(["2012", "2014"])
+  end
 end

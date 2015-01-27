@@ -9,6 +9,14 @@ class Legislator < ActiveRecord::Base
     end
   end
 
+  def years_with_contributors
+    Rails.cache.fetch("#{cache_key}_election_cycles") do
+      election_cycles.select do |year|
+        contributors.cycle(self, year).count > 0
+      end
+    end
+  end
+
   def name
     "#{first_name} #{last_name}"
   end
@@ -31,5 +39,11 @@ class Legislator < ActiveRecord::Base
 
   def self._database_legislators(zipcode)
     where(zipcode: zipcode).where(in_office: true)
+  end
+
+  private
+
+  def election_cycles
+    (1990..Date.today.year).select {|year| year.even?}.map(&:to_s)
   end
 end

@@ -5,7 +5,8 @@ include Login
 describe "user profile" do
   it "can add/update a zipcode" do
     legislator  = create(:legislator, zipcode: "80203")
-    contributor = create(:contributor, legislator: legislator)
+    sunlight_influence_explorer = class_double("SunlightInfluenceExplorer").as_stubbed_const
+    allow(sunlight_influence_explorer).to receive(:top_contributors) { [] }
     login
     user = User.last
 
