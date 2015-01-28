@@ -305,6 +305,8 @@ GEM
       colorize (>= 0.7.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    sucker_punch (1.3.2)
+      celluloid (~> 0.16.0)
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
       ref
@@ -371,6 +373,7 @@ DEPENDENCIES
   shoulda-matchers
   simplecov
   spring
+  sucker_punch (~> 1.0)
   therubyracer
   timecop
   turbolinks
