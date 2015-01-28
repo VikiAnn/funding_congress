@@ -6,6 +6,7 @@ require 'factory_girl_rails'
 require 'faker'
 require 'omniauth'
 require 'vcr'
+require 'sucker_punch/testing/inline'
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
