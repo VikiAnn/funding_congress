@@ -2,7 +2,7 @@ require 'rails_helper'
 require "support/login"
 include Login
 
-describe "user profile" do
+describe "user profile", job: true do
   it "can add/update a zipcode" do
     legislator  = create(:legislator, zipcode: "80203")
     sunlight_influence_explorer = class_double("SunlightInfluenceExplorer").as_stubbed_const

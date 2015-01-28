@@ -7,7 +7,7 @@
     <p>Welcome to FundingCongress.com, <%= @user_name %> :)</p>
     <p>
       This is my self-directed project at Turing School.
-    If you haven't already, please add a zipcode to your profile so you can see your legislators and their contributors
+    If you haven't already, please <%= link_to "add a zipcode to your profile", user_url(@user) %> so you can see your legislators and their contributors
     every time you log in. You can update your zipcode or email by clicking your photo in the navbar.
     </p>
     <p>

@@ -3,6 +3,7 @@ class UserMailer < ActionMailer::Base
 
   def welcome(email_hash)
     @user_name = email_hash[:user_name]
+    @user = User.find_by(uid: email_hash[:uid])
     mail(to: email_hash[:email], subject: 'Welcome to FundingCongress.com')
   end
 end

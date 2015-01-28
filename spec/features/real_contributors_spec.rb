@@ -2,7 +2,7 @@ require 'rails_helper'
 require "support/login"
 include Login
 
-describe "real contributors from api" do
+describe "real contributors from api", job: true do
   it "pulls up real contributors by cycle year" do
     VCR.use_cassette 'service/real_contributors' do
       login

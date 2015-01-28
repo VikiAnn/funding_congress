@@ -6,7 +6,7 @@ def mock_invalid_authentication
   OmniAuth.config.mock_auth[:facebook] = :invalid_credentials
 end
 
-describe "facebook login", type: :feature do
+describe "facebook login", type: :feature, job: true do
   it "can log in with facebook" do
     mock_auth_hash
     visit root_path

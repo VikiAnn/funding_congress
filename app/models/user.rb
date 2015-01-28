@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   def send_welcome_email_if_new_user(auth_data)
     unless email && name
-      UserWelcomeEmailJob.new.async.perform(user_name: auth_data["info"]["name"], email: auth_data["info"]["email"])
+      UserWelcomeEmailJob.new.async.perform(user_name: auth_data["info"]["name"], email: auth_data["info"]["email"], uid: uid)
     end
   end
 end

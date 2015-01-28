@@ -2,7 +2,7 @@ require 'rails_helper'
 require "support/login"
 include Login
 
-describe "real legislators from the api", type: :feature do
+describe "real legislators from the api", type: :feature, job: true do
   it "pulls up real legislators with pictures when a user with a zipcode is logged in" do
     VCR.use_cassette 'service/real_legislators' do
       sunlight_influence_explorer = class_double("SunlightInfluenceExplorer").as_stubbed_const
