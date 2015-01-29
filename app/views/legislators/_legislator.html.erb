@@ -19,7 +19,7 @@
       <h4>Top Funding Contributors (by campaign cycle)</h4>
       <ul class="nav nav-tabs">
         <% legislator.years_with_contributors.each do |year| %>
-          <li role="presentation" <%= active(year, selected_year) %>><%= link_to year, legislators_path(cycle: year, zipcode: zipcode) %></li>
+          <li role="presentation" <%= active(year, selected_year) %>><%= link_to year, legislators_path(cycle: year, zipcode: zipcode, anchor: legislator.last_name) %></li>
         <% end %>
       </ul>
 
