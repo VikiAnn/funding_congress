@@ -12,7 +12,7 @@ A JSON API for looking up legislators by zipcode along with their top 5 campaign
 
 ## Methods
 
-`legislators`
+1. `legislators`
 
 Example usage:
 
@@ -29,7 +29,7 @@ Example usage:
 
 If they are not in the database already, the request may take several seconds as data is obtained from the Sunlight APIs.
 
-`legislators/:id`
+2. `legislators/:id`
 
 Example usage:
 
