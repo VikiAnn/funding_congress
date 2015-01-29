@@ -27,8 +27,6 @@ A JSON API for looking up legislators by zipcode along with their top 5 campaign
 
     `http://fundingcongress.com/api/v1/legislators/100.json?zipcode=80203`
 
-    If they are not in the database already, the request may take several seconds as data is obtained from the Sunlight APIs.
-
 2. `legislators/:id`
 
     Example usage:
