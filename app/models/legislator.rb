@@ -42,6 +42,7 @@ class Legislator < ActiveRecord::Base
   end
 
   def campaign_contributors
+    years_with_contributors
     contributors.map { |contributor| ContributorSerializer.new(contributor) }
     .group_by do |contributor|
       contributor.object.cycle

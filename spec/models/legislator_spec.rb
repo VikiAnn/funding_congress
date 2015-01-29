@@ -36,6 +36,8 @@ RSpec.describe Legislator, type: :model do
     legislator = create(:legislator)
     contributor1 = create(:contributor, legislator: legislator, cycle: "2012")
     contributor2 = create(:contributor, legislator: legislator, cycle: "2014")
+    influence_explorer = class_double("SunlightInfluenceExplorer").as_stubbed_const
+    allow(influence_explorer).to receive(:top_contributors).and_return([])
 
     expect(legislator.campaign_contributors["2012"].count).to eq(1)
     expect(legislator.campaign_contributors["2014"].count).to eq(1)
