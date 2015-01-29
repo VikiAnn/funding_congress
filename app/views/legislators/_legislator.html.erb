@@ -24,13 +24,13 @@
       </ul>
 
       <% if legislator.contributors.cycle(legislator, selected_year).present? %>
-        <table class="table contributors_for_legislator_<%= legislator.id %>">
+        <table class="table myTable tablesorter contributors_for_legislator_<%= legislator.id %>">
           <thead>
             <tr>
               <th>Organization</th>
-              <th>Individual</th>
-              <th>PAC</th>
-              <th>Total</th>
+              <th><span class="sortable">Individual &nbsp; <i class="fa fa-sort"></span></i></th>
+              <th><span class="sortable">PAC &nbsp;<i class="fa fa-sort"></span></i></th>
+              <th><span class="sortable">Total &nbsp;<i class="fa fa-sort"></i></span></th>
             </tr>
           </thead>
           <tbody>
