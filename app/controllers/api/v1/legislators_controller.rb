@@ -7,6 +7,11 @@ class Api::V1::LegislatorsController < ApplicationController
     respond_with @legislators
   end
 
+  def show
+    @legislator = Legislator.find(params[:id])
+    respond_with @legislator
+  end
+
   private
 
   def get_legislators
