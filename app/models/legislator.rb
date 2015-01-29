@@ -22,7 +22,11 @@ class Legislator < ActiveRecord::Base
   end
 
   def full_name_and_title
-    "#{title} #{first_name} #{last_name}, #{party}"
+    "#{title} #{name}, #{party}"
+  end
+
+  def photo_url
+    "http://theunitedstates.io/images/congress/225x275/#{bioguide_id}.jpg"
   end
 
   def facebook_url
@@ -35,6 +39,13 @@ class Legislator < ActiveRecord::Base
 
   def youtube_url
     "https://www.youtube.com/#{youtube_id}"
+  end
+
+  def campaign_contributors
+    contributors.map { |contributor| ContributorSerializer.new(contributor) }
+    .group_by do |contributor|
+      contributor.object.cycle
+    end
   end
 
   def self._database_legislators(zipcode)

@@ -20,6 +20,8 @@ gem 'faker', require: false
 gem 'httparty'
 gem 'redis-rails'
 gem 'sucker_punch', '~> 1.0'
+gem 'responders', github: 'plataformatec/responders'
+gem 'active_model_serializers'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

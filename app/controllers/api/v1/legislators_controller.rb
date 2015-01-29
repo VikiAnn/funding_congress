@@ -1,8 +1,10 @@
-class LegislatorsController < ApplicationController
+class Api::V1::LegislatorsController < ApplicationController
+  respond_to :json, :xml
+
   def index
     get_legislators
-    @year = params[:cycle] || "2014"
     @zipcode = params[:zipcode]
+    respond_with @legislators
   end
 
   private
@@ -10,8 +12,6 @@ class LegislatorsController < ApplicationController
   def get_legislators
     if params[:zipcode]
       @legislators = Legislator.for_zipcode(params[:zipcode])
-    elsif current_user && current_user.zipcode
-      @legislators = Legislator.for_zipcode(current_user.zipcode)
     else
       @legislators = Legislator.all
     end
