@@ -16,7 +16,7 @@ A JSON API for looking up legislators by zipcode along with their top 5 campaign
 
     Example usage:
 
-    `http://fundingcongress.com/api/v1/legislators/100.json`
+    `http://fundingcongress.com/api/v1/legislators.json`
 
     Use this method with no additional options to see all legislators in the database.
     Please note, the database is not an exhaustive list of all legislators; legislators are pulled in as users of the site search for their zipcode.
@@ -25,7 +25,7 @@ A JSON API for looking up legislators by zipcode along with their top 5 campaign
 
     Example usage:
 
-    `http://fundingcongress.com/api/v1/legislators/100.json?zipcode=80203`
+    `http://fundingcongress.com/api/v1/legislators.json?zipcode=80203`
 
 2. `legislators/:id`
 
