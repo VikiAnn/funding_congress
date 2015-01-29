@@ -10,7 +10,7 @@ A JSON API for looking up legislators by zipcode along with their top 5 campaign
 
 `http://fundingcongress.com/api/v1/[method].json[options]`
 
-## Methods
+### Methods
 
 1. `legislators`
 
