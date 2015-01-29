@@ -14,25 +14,25 @@ A JSON API for looking up legislators by zipcode along with their top 5 campaign
 
 1. `legislators`
 
-Example usage:
+    Example usage:
 
-`http://fundingcongress.com/api/v1/legislators/100.json`
+    `http://fundingcongress.com/api/v1/legislators/100.json`
 
-Use this method with no additional options to see all legislators in the database.
-Please note, the database is not an exhaustive list of all legislators; legislators are pulled in as users of the site search for their zipcode.
+    Use this method with no additional options to see all legislators in the database.
+    Please note, the database is not an exhaustive list of all legislators; legislators are pulled in as users of the site search for their zipcode.
 
-Add a zipcode option to the legislators method to see all legislators for that zipcode.
+    Add a zipcode option to the legislators method to see all legislators for that zipcode.
 
-Example usage:
+    Example usage:
 
-`http://fundingcongress.com/api/v1/legislators/100.json?zipcode=80203`
+    `http://fundingcongress.com/api/v1/legislators/100.json?zipcode=80203`
 
-If they are not in the database already, the request may take several seconds as data is obtained from the Sunlight APIs.
+    If they are not in the database already, the request may take several seconds as data is obtained from the Sunlight APIs.
 
 2. `legislators/:id`
 
-Example usage:
+    Example usage:
 
-`http://fundingcongress.com/api/v1/legislators/100.json`
+    `http://fundingcongress.com/api/v1/legislators/100.json`
 
-Use this method to see only one legislator along with its contributors.
+    Use this method to see only one legislator along with its contributors.
