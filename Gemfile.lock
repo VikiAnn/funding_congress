@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/plataformatec/responders.git
+  revision: dd0587880b3784f7e280b0f061df43110b6b1be9
+  specs:
+    responders (2.1.0)
+      railties (>= 4.2.0, < 5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -20,6 +27,8 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.1)
+    active_model_serializers (0.9.3)
+      activemodel (>= 3.2)
     activejob (4.2.0)
       activesupport (= 4.2.0)
       globalid (>= 0.3.0)
@@ -340,6 +349,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers
   byebug
   capistrano (~> 3.3.0)
   capistrano-bundler
@@ -369,6 +379,7 @@ DEPENDENCIES
   pry-rails
   rails (= 4.2.0)
   redis-rails
+  responders!
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

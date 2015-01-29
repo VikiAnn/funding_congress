@@ -16,6 +16,12 @@ RSpec.describe Legislator, type: :model do
     expect(legislator.youtube_url).to eq ("https://www.youtube.com/#{legislator.youtube_id}")
   end
 
+  it "has a photo url" do
+    legislator = create(:legislator)
+
+    expect(legislator.photo_url).to eq("http://theunitedstates.io/images/congress/225x275/#{legislator.bioguide_id}.jpg")
+  end
+
   it "knows what years it has contributors for" do
     legislator = create(:legislator, first_name: "Sarah", last_name: "Silver", title: "Sen", party: "D")
     contributor1 = create(:contributor, legislator: legislator, cycle: "2012")
@@ -24,5 +30,14 @@ RSpec.describe Legislator, type: :model do
     allow(sunlight_influence_explorer).to receive(:top_contributors) { [] }
 
     expect(legislator.years_with_contributors).to eq(["2012", "2014"])
+  end
+
+  it "can group contributors by cycle" do
+    legislator = create(:legislator)
+    contributor1 = create(:contributor, legislator: legislator, cycle: "2012")
+    contributor2 = create(:contributor, legislator: legislator, cycle: "2014")
+
+    expect(legislator.campaign_contributors["2012"].count).to eq(1)
+    expect(legislator.campaign_contributors["2014"].count).to eq(1)
   end
 end
